@@ -1,0 +1,31 @@
+<div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
+     class=" z-30 relative hidden sm:block inset-y-0 left-0 w-60 transition duration-300 transform bg-white dark:bg-gray-900 sm:translate-x-0 sm:static sm:inset-0">
+
+    <div class="sticky top-24">
+        <div class="flex items-center justify-center mt-8">
+            <div class="flex items-center">
+                <span class="text-gray-800 dark:text-white text-2xl font-semibold">
+                    {{ 'app.profile.sidebar.title'|trans }}
+                </span>
+            </div>
+        </div>
+
+        <nav class="flex flex-col mt-10 px-4 text-center font-bold">
+            <ul class="tabs-menu">
+                <li
+                        class="py-2 dashboard_current_tab text-sm text-gray-700 dark:text-gray-100 bg-white dark:bg-gray-800 rounded">
+                    <a href="#dashboard_tab_1">
+                        {{ 'app.profile.sidebar.edit_profile'|trans }}
+                    </a>
+                </li>
+
+                <li
+                        class="py-2 text-sm text-gray-700 mt-3 dark:text-gray-100 dark:bg-gray-800 bg-white rounded">
+                    <a href="#dashboard_tab_2">
+                        {{ 'app.profile.sidebar.checked_out'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

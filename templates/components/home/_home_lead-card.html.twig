@@ -1,0 +1,43 @@
+<div class="flex  bg-white rounded overflow-hidden shadow-lg"
+     id="#top"
+>
+    <a href="{{ path('shop_show',{"id":top_discount_product.id}) }}"
+       class="flex flex-wrap no-underline hover:no-underline">
+        <div class="w-full md:w-1/2 rounded-t max-h-96">
+            <img src="/uploads/products/{{ top_discount_product.image }}"
+                 class="h-full w-full shadow">
+        </div>
+
+        <div class="w-full md:w-1/2 relative flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+                <p class="w-full text-gray-600 text-xs md:text-sm pt-6 px-6">{{ "now"|date }}</p>
+                <div class="w-full font-bold text-xl text-gray-900 px-6">
+                   {{ 'app.home.Our Top Sale Product'|trans}} !
+                </div>
+                <p class="text-gray-800 font-serif text-base px-6 mb-5 capitalize">
+                    <br>
+                    {{ 'app.home.lead_card_intro'|trans }}
+                </p>
+                <span class="py-1 px-2 text-md font-bold bg-gray-900 text-white xl:hover:text-gray-500">
+                    {{ max_discount }}% OFF
+                </span>
+            </div>
+
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div class="inline-block align-bottom mr-5 my-3">
+                        <span class=" text-3xl line-through text-gray-400">{{ top_discount_product.price | price }}</span>
+                        <span class="text-xl leading-none align-baseline line-through text-gray-400">.00</span>
+                        <br>
+                        <span class="text-2xl  leading-none align-baseline">$</span>
+                        <span class="font-bold text-5xl leading-none align-baseline">
+                                {{ top_discount_product.price - ((top_discount_product.discount.discountPercent / 100) * top_discount_product.price) }}<small>.00</small>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </a>
+</div>

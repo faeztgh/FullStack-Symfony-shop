@@ -1,0 +1,58 @@
+app:
+  registration:
+    page_title: "Registrieren"
+    form_title: "Registrieren"
+    register_btn: "Registrieren"
+    first_name: "Vorname"
+    last_name: "Nachname"
+    email: "Email"
+    password: "Passwort"
+    username: "Benutzername"
+    phone_no: "Telefon"
+    address: "Adresse"
+    errors:
+      password_notblank: "Bitte geben Sie ein Passwort ein"
+      email_exist: "Email existiert!"
+
+  login:
+    page_title: "Anmeldung"
+    form_title: "Anmeldung"
+    login_btn: "Anmeldung"
+    username: "Benutzername"
+    password: "Passwort"
+    forgot_password: "Passwort Vergessen"
+
+  reset_password:
+    page_title: "Ihr Passwort zurücksetzen"
+    form_title: "Ihr Passwort zurücksetzen"
+    email: "Email"
+    sub_message: "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link, um Ihr Passwort zurückzusetzen"
+    email_notblank: "Bitte geben Sie Ihre Email ein"
+    send_email_btn: "Email senden"
+    reset_password_btn: "Passwort zurücksetzen"
+    password_notblank: "Bitte geben Sie ein Passwort ein"
+    new_password: "Neues Passwort"
+    repeat_password: "Passwort wiederholen"
+    invalid_message: "Die Passwortfelder müssen übereinstimmen."
+
+  profile:
+    first_name: "Vorname"
+    last_name: "Nachname"
+    username: "Benutzername"
+    email: "Email"
+    address: "Adresse"
+    phone_no: "Telefon"
+    upload_avatar_btn: "Avatar hochladen"
+    save_btn: "Speichern"
+
+  contact:
+    send_btn: "Senden"
+    full_name: "Vollständiger Name"
+    email: "Email"
+    subject: "Thema"
+    message: "Nachricht"
+
+  ticket:
+    save_btn: "Speichern"
+    subject: "Thema"
+    message: "Nachricht"

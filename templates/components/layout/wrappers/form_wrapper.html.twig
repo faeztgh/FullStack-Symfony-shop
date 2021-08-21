@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="w-full h-screen flex">
+        <img src="{{ form_side_img }}"
+             alt="background" class="object-cover md:block hidden object-center h-screen w-1/2">
+        <div class="bg-white flex flex-col justify-center items-center w-full md:w-1/2 shadow-lg">
+            <h1 class="mt-5 text-3xl text-center font-semibold">{{ form_title }}</h1>
+            <div class="mt-5 w-full max-w-lg">
+
+                {% block form_wrapper %}{% endblock %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

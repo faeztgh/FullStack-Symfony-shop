@@ -1,0 +1,199 @@
+<div class="lg:m-8 m-3 shadow-xl">
+    <div class="max-w-sm w-full bg-gray-900 shadow-lg rounded-xl p-6">
+        <div class="flex flex-col ">
+            <div class="relative h-62 w-full mb-3">
+                <div class="absolute flex flex-col top-0 right-0 p-3">
+                    {% if app.user %}
+                        <button class="transition ease-in duration-300 bg-gray-800  hover:text-purple-500
+                                     shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+                                id="addToWishlist{{ card_id }}"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                 id="wishlistBtn{{ card_id }}"
+                                 fill={% if product in card_wishlist %} 'red' {% else %} 'none' {% endif %}
+                            viewBox="0 0 24 24"
+                            stroke={% if product in card_wishlist %} 'none' {% else %} 'currentColor' {% endif %}>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                    {% else %}
+                        <a class="transition ease-in duration-300 bg-gray-800  hover:text-purple-500
+                                     shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+                           href="{{ path('app_login') }}"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                 id="wishlistBtn{{ card_id }}"
+                                 fill='none'
+                                 viewBox="0 0 24 24"
+                                 stroke='currentColor'>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+
+                                </path>
+                            </svg>
+                        </a>
+                    {% endif %}
+                </div>
+                <a href="{{ path('shop_show', {"id":card_id}) }}">
+                    <img src="/uploads/products/{{ product.image }}" alt="{{ card_name }}"
+                         class=" w-full object-fill rounded-2xl "
+                         style="width: 340px; height: 270px;">
+                </a>
+            </div>
+            <div class="flex-auto justify-evenly">
+                <div class="flex flex-wrap ">
+                    <div class="w-full flex-none text-sm flex items-center text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-500 mr-1"
+                             viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <span class="text-gray-400 whitespace-nowrap mr-3">{{ card_rate }}</span>
+                        <span class="mr-2 text-gray-400">{{ card_brand }}</span>
+                    </div>
+                    <div class="flex items-center w-full justify-between min-w-0 ">
+                        <h2 class="text-lg mr-auto text-truncate cursor-pointer text-gray-200 hover:text-purple-500 truncate ">
+                            <a href="{{ path('shop_show', {"id":card_id}) }}" class="product_desc hover:text-gray-200"
+                               data-tippy-content="{{ card_brief_desc }}">
+                                {{ card_name }}
+                            </a>
+                        </h2>
+                    </div>
+                </div>
+                <div class="text-xl text-white font-semibold mt-1 flex">
+                    <span class=" line-through text-gray-400 mr-2">
+                        ${{ card_price }}
+                    </span>
+                    <span>
+                        ${{ card_price - ((card_discount / 100) * card_price) }}.00
+                    </span>
+                </div>
+                <div class="lg:flex  py-4  text-sm text-gray-600">
+                    <div class="flex-1 inline-flex items-center  mb-3">
+                        <div class="w-full flex-none text-sm flex items-center text-gray-600">
+                            <ul class="flex flex-row justify-center items-center space-x-2">
+                                <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-blue-600 rounded-full transition
+                         ease-in duration-300">
+                          <a href="#blue" class="block w-3 h-3 bg-blue-600 rounded-full"></a>
+                        </span>
+                                </li>
+                                <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-yellow-400 rounded-full transition
+                         ease-in duration-300">
+                          <a href="#yellow" class="block w-3 h-3  bg-yellow-400 rounded-full"></a>
+                        </span>
+                                </li>
+                                <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-red-500 rounded-full transition
+                         ease-in duration-300">
+                          <a href="#red" class="block w-3 h-3  bg-red-500 rounded-full"></a>
+                        </span>
+                                </li>
+                                <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-green-500 rounded-full transition
+                         ease-in duration-300">
+                          <a href="#green" class="block w-3 h-3  bg-green-500 rounded-full"></a>
+                        </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex-1 inline-flex items-center mb-3">
+                        <span class="text-white whitespace-nowrap mr-3">
+                            {{ 'app.shop._card.size'|trans }}
+                        </span>
+                        <div class="cursor-pointer text-gray-50 ">
+                            <span class="hover:text-purple-500 p-1 py-0">{{ card_size }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2 text-sm font-medium justify-start">
+                    {% if card_quantity > 0 %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium
+                        mb-2 md:mb-0 bg-green-500 px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full
+                        hover:bg-green-600 "
+                                    id="addToCart{{ card_id }}"
+                            >
+                                {{ 'app.shop._card.add_to_cart'|trans }}
+                            </button>
+
+                        {% else %}
+
+                            <a class="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2
+                        md:mb-0 bg-green-500 px-5 py-2 hover:shadow-lg tracking-wider text-white rounded-full
+                        hover:bg-green-600 "
+                               href="{{ path('app_login') }}"
+                            >
+                                {{ 'app.shop._card.add_to_cart'|trans }}
+                            </a>
+                        {% endif %}
+
+                    {% else %}
+                        <span class="transition ease-in duration-300 inline-flex items-center text-sm font-medium mb-2
+                        md:mb-0 bg-gray-400 px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full cursor-not-allowed">
+                            Not Available
+                        </span>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(() => {
+            $("#addToCart{{ card_id }}").on("click", () => {
+                $.ajax({
+                    url: "{{ path('add_to_cart') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ card_id }},
+                    },
+                    success: (data) => {
+                        $("#shopping_bag_count").html(data.cartItems);
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            });
+
+
+            // wishlist
+            $("#addToWishlist{{ card_id }}").on("click", () => {
+                $.ajax({
+                    url: "{{ path('add_to_wishlist') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ card_id }},
+                    },
+                    success: (data) => {
+                        changeWishlistItemStatus(data.changedItemId, data.changedStatusColor);
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+
+                const changeWishlistItemStatus = (id, color) => {
+                    $("#wishlistBtn" + id).attr("fill", color).attr("stroke", color === "red" ? "none" : "currentColor");
+                }
+            });
+        });
+    </script>
+{% endblock %}

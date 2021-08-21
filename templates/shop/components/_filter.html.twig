@@ -1,0 +1,191 @@
+<div class=" my-3 align-middle justify-content-center flex px-5 flex-col-reverse sm:flex-row">
+
+    <button type="button"
+            class="btn m-2 max-w-xs sm:mr-10 shadow-sm bg-gray-100 whitespace-nowrap"
+            data-toggle="collapse"
+            data-target="#filters">
+        <i class="fa fa-filter"></i>
+        {{ 'app.shop._filter.Filters'|trans }}
+    </button>
+
+    <form class="flex max-w-lg p-1" method="GET" action="{{ path('search') }}">
+        <input class="form-control rounded-l-sm"
+               type="search"
+               name="query"
+               placeholder="{{ 'app.nav.search'|trans }}"/>
+
+        <button class="btn rounded-r-sm bg-dark text-gray-200 hover:text-white"
+                aria-label="search"
+                type="submit">
+            {{ 'app.nav.search'|trans }}
+        </button>
+    </form>
+
+</div>
+
+<div id="filters" class="collapse px-20">
+    <hr class="solid col-9 mx-auto">
+    <form class="" method="GET" action="{{ path('shop') }}">
+
+        <div class="d-md-flex d-lg-flex d-xl-flex justify-content-around col-9 mx-auto">
+            <div class="col-lg-4 col-xl-3 col-md-6">
+                <article class="filter-group">
+                    <header class="card-header">
+                        <h6 class="title text-blue-600 font-semibold">
+                            {{ 'app.shop._filter.Sort By Price'|trans }}
+                        </h6>
+                    </header>
+
+                    <div class="filter-content" id="collapse_aside1" style="">
+                        <div class="card-body">
+                            <select class="form-select"
+                                    name="price"
+                                    id="price"
+                                    value="{{ filter_price }}"
+                            >
+                                <option value="">
+                                    {{ 'app.shop._filter.Select'|trans }}
+                                </option>
+                                <option value="ASC" {{ filter_price == "ASC" ? "selected" }}>
+                                    {{ 'app.shop._filter.Lowest'|trans }}
+                                </option>
+                                <option value="DESC" {{ filter_price == "DESC" ? "selected" }}>
+                                    {{ 'app.shop._filter.Highest'|trans }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="filter-group">
+                    <header class="card-header">
+                        <h6 class="title text-blue-600 font-semibold">
+                            {{ 'app.shop._filter.Sort by Date'|trans }}
+                        </h6>
+                    </header>
+
+                    <div class="filter-content" id="collapse_aside1" style="">
+                        <div class="card-body">
+                            <select class="form-select"
+                                    name="date"
+                                    id="date"
+                                    value="{{ filter_date }}"
+                            >
+                                <option value="">
+                                    {{ 'app.shop._filter.Select'|trans }}
+                                </option>
+                                <option value="ASC" {{ filter_date == "ASC" ? "selected" }}>
+                                    {{ 'app.shop._filter.Newest'|trans }}
+                                </option>
+                                <option value="DESC" {{ filter_date == "DESC" ? "selected" }}>
+                                    {{ 'app.shop._filter.Oldest'|trans }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="filter-group">
+                    <header class="card-header">
+                        <h6 class="title text-blue-600 font-semibold">
+                            {{ 'app.shop._filter.Size'|trans }}
+                        </h6>
+                    </header>
+                    <div class="filter-content" id="collapse_aside3" style="">
+                        <div class="card-body">
+                            <select class="form-select"
+                                    name="size"
+                                    id="size"
+                                    value="{{ filter_size }}"
+                            >
+                                <option value="">{{ 'app.shop._filter.Select'|trans }}</option>
+                                <option value="1" {{ filter_size == "1" ? "selected" }}>xs</option>
+                                <option value="2" {{ filter_size == "2" ? "selected" }}>sm</option>
+                                <option value="3" {{ filter_size == "3" ? "selected" }}>md</option>
+                                <option value="4" {{ filter_size == "4" ? "selected" }}>lg</option>
+                                <option value="5" {{ filter_size == "5" ? "selected" }}>xl</option>
+                                <option value="6" {{ filter_size == "6" ? "selected" }}>xxl</option>
+                            </select>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-4 col-xl-3 col-md-6">
+                <article class="filter-group">
+                    <header class="card-header">
+                        <h6 class="title text-blue-600 font-semibold">
+                            {{ 'app.shop._filter.Color'|trans }}
+                        </h6>
+                    </header>
+                    <div class="filter-content" id="collapse_aside1" style="">
+                        <div class="card-body">
+                            <select class="form-select"
+                                    name="color"
+                                    id="color"
+                                    value="red"
+                            >
+                                <option value="">{{ 'app.shop._filter.Select'|trans }}</option>
+                                <option value="red" {{ filter_color == "red" ? "selected" }}>{{ 'app.shop._filter.Red'|trans }}</option>
+                                <option value="blue" {{ filter_color == "bule" ? "selected" }}>{{ 'app.shop._filter.Blue'|trans }}</option>
+                                <option value="black" {{ filter_color == "black" ? "selected" }}>{{ 'app.shop._filter.Black'|trans }}</option>
+                                <option value="white" {{ filter_color == "white" ? "selected" }}>{{ 'app.shop._filter.White'|trans }}</option>
+                                <option value="green" {{ filter_color == "green" ? "selected" }}>{{ 'app.shop._filter.Green'|trans }}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-4 col-xl-3 col-md-6">
+                <article class="filter-group">
+                    <header class="card-header">
+                        <h6 class="title text-blue-600 font-semibold">
+                            {{ 'app.shop._filter.Rate'|trans }}
+                        </h6>
+                    </header>
+                    <div class="filter-content" id="collapse_aside4" style="">
+                        <div class="card-body">
+                            <select class="form-select"
+                                    name="rate"
+                                    id="rate"
+                                    value="{{ filter_rate }}"
+                            >
+                                <option value="">{{ 'app.shop._filter.Select'|trans }}</option>
+                                <option value="1" {{ filter_rate == "1" ? "selected" }}>1</option>
+                                <option value="2" {{ filter_rate == "2" ? "selected" }} >2</option>
+                                <option value="3" {{ filter_rate == "3" ? "selected" }} >3</option>
+                                <option value="4" {{ filter_rate == "4" ? "selected" }} >4</option>
+                                <option value="5" {{ filter_rate == "5" ? "selected" }} >5</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="flex justify-around">
+                    <a href="{{ path('shop') }}"
+                       class="btn btn-medium button mt-6 mb-12 md:mb-0 md:mt-10 inline-block text-white bg-red-500 hover:bg-red-600 rounded-lg shadow mx-auto"
+                    >
+                        {{ 'app.shop._filter.Reset'|trans }}
+                    </a>
+
+                    <button
+                            onclick="this.form.submit()"
+                            class="btn btn-medium button whitespace-nowrap mt-6 mb-12 md:mb-0 md:mt-10 inline-block text-white bg-blue-500 hover:bg-blue-600 rounded-lg shadow mx-auto"
+                            data-abc="true"
+                            data-toggle="collapse"
+                            data-target="#filters">
+                        {{ 'app.shop._filter.Apply'|trans }}
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+

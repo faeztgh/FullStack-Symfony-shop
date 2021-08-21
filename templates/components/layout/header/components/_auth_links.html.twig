@@ -1,0 +1,67 @@
+<li class="nav-item mr-2">
+    <a class="nav-link whitespace-nowrap relative" href="{{ path('cart_index') }}">
+                            <span aria-atomic="true" aria-live="polite"
+                                  aria-label="shopping cart count"
+                                  class="absolute top-1 -left-1 bg-red-500 text-white rounded-full h-5 w-5 flex justify-center items-center font-light"
+                                  id="shopping_bag_count"
+                            >
+                                    {{ app.user.cart.uncheckedCartItem | length }}
+                            </span>
+        <i class="fas fa-shopping-bag text-2xl"></i>
+    </a>
+</li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle flex justify-start items-center " data-bs-toggle="dropdown"
+       href="#" role="button"
+       aria-haspopup="true" aria-expanded="false">
+        {% if app.user.avatar != null or  app.user.avatar != "" %}
+            <img src="{{ asset('build/avatars/' ~ app.user.avatar ) }}"
+                 alt=""
+                 class="rounded-full w-8 h-8" style="min-width: 2rem"/>
+        {% else %}
+            <i class="fas fa-user-circle text-2xl "></i>
+        {% endif %}
+    </a>
+    <div class="dropdown-menu font-semibold">
+
+        {% if is_granted('ROLE_ADMIN') %}
+
+            <a class="dropdown-item" href="{{ path('admin') }}">
+                {{ 'app.nav.links.admin_panel'|trans }}
+            </a>
+
+        {% endif %}
+
+        <a class="dropdown-item" href="{{ path('profile_index') }}">
+            {{ 'app.nav.links.profile'|trans }}
+        </a>
+
+        <a class="dropdown-item flex justify-content-between" href="{{ path('cart_index') }}">
+            {{ 'app.nav.links.cart'|trans }}
+            <span aria-atomic="true" aria-live="polite"
+                  aria-label="shopping cart count"
+                  class=" bg-red-500 text-white rounded-full h-5 w-5 flex justify-center items-center font-light"
+                  id="shopping_bag_count"
+            >
+                                {{ app.user.cart.uncheckedCartItem | length }}
+                            </span>
+        </a>
+
+        <a class="dropdown-item" href="{{ path('wishlist') }}">
+            {{ 'app.nav.links.wish_list'|trans }}
+        </a>
+
+
+        <a class="dropdown-item" href="{{ path('ticket_index') }}">
+            {{ 'app.nav.links.ticket'|trans }}
+        </a>
+
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{{ path('app_logout') }}">
+            <i class="fas fa-sign-out-alt"></i>
+            {{ 'app.nav.links.logout'|trans }}
+        </a>
+    </div>
+</li>

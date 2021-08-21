@@ -1,0 +1,111 @@
+<div class="col-span-12 mt-5">
+    <div class="grid gap-2 grid-cols-1 lg:grid-cols-2">
+        <div class="bg-white shadow-lg p-4" id="chartline"></div>
+        <div class="bg-white shadow-lg" id="chartpie"></div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    var chart = document.querySelector('#chartline')
+
+    const mostViewsNumbers = ({{ mostViewProductsNumbers | json_encode | raw }}).map(item => Number(item));
+    const mostViewsNames = {{ mostViewProductsNames | json_encode | raw }};
+    const leastQuantityNumbers = {{ leastQuantityNumbers | json_encode | raw }}
+
+    var options = {
+        series: [{
+            name: 'Views',
+            type: 'area',
+            data: mostViewsNumbers,
+        }, {
+            name: 'Quantity',
+            type: 'line',
+            data: leastQuantityNumbers,
+        }],
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: true
+            }
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        fill: {
+            type: 'solid',
+            opacity: [0.35, 1],
+        },
+        labels: mostViewsNames,
+        markers: {
+            size: 0
+        },
+        xaxis: {
+            labels: {
+                rotate: -45,
+            },
+            categories: mostViewsNames,
+            tickPlacement: 'on'
+        },
+        yaxis: [{
+            title: {
+                text: 'Quantity',
+            },
+        },
+
+        ],
+        tooltip: {
+            shared: true,
+            intersect: false,
+            y: {
+                formatter: function (y) {
+                    if (typeof y !== "undefined") {
+                        return y.toFixed(0) + " points";
+                    }
+                    return y;
+                }
+            }
+        }
+    };
+    var chart = new ApexCharts(chart, options);
+    chart.render();
+</script>
+<script>
+
+    const total = mostViewsNumbers.reduce((a, b) => a + b);
+
+    var chart = document.querySelector('#chartpie')
+    var options = {
+        series: mostViewsNumbers,
+        chart: {
+            height: 450,
+            type: 'radialBar',
+        },
+        plotOptions: {
+            radialBar: {
+                dataLabels: {
+                    name: {
+                        fontSize: '22px',
+                    },
+                    value: {
+                        fontSize: '16px',
+                    },
+                    total: {
+                        show: true,
+                        label: 'Total',
+                        formatter: function (w) {
+                            // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                            return total
+                        }
+                    }
+                }
+            }
+        },
+        labels: mostViewsNames,
+    };
+    var chart = new ApexCharts(chart, options);
+    chart.render();
+</script>

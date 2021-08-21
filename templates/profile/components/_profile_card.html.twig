@@ -1,0 +1,33 @@
+<div class="w-full flex flex-col justify-center items-center py-5">
+    <div class="rounded-3xl overflow-visible p-3 shadow-xl max-w-xs mb-10 bg-blue-500">
+        <img alt="" src="https://i.imgur.com/dYcYQ7E.png" class="w-full shadow"/>
+        <div class="flex justify-center -mt-8 ">
+
+            {% if app.user.avatar != null or  app.user.avatar != "" %}
+                <img src="{{ asset('build/avatars/' ~ app.user.avatar ) }}"
+                     alt=""
+                     class="rounded-full border-solid border-white border-2 -mt-3 w-20 h-20 shadow-lg"/>
+            {% else %}
+                <i class="fas fa-user-circle text-5xl border-2 border-white rounded-full"></i>
+            {% endif %}
+
+        </div>
+        <div class="text-center px-3 pb-6 pt-2 font-semibold">
+            <h3 class="text-white text-sm bold capitalize text-2xl">{{ user.firstName }} {{ user.lastName }}</h3>
+        </div>
+        <div class="flex justify-center pb-3 text-white whitespace-nowrap font-semibold">
+            <div class="text-center mr-3 border-r pr-3 ">
+                <h2 class="text-white">{{ uncheckedCartItems|length }}</h2>
+                <span>
+                    {{ 'app.profile.profile_card.shopping_bag'|trans }}
+                </span>
+            </div>
+            <div class="text-center">
+                <h2 class="text-white">{{ checkedCartItems|length }}</h2>
+                <span>
+                    {{ 'app.profile.profile_card.checked_out'|trans }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

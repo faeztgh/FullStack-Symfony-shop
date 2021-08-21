@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = query %}
+
+{% block body %}
+    <div class="flex mx-auto">
+        <div class="flex flex-wrap mx-auto w-full py-56 sm:px-20 px-5  justify-content-around  items-center">
+            {% if products | length == 0 %}
+                {% include 'components/empty/_empty.html.twig' %}
+            {% else %}
+                {% for product in products %}
+
+                    {% include 'components/cards/components/cards/_shop_card.html.twig' with
+                        {
+                            'card_thumbnail': product.image,
+                            'card_brief_desc': product.briefDescription,
+                            'card_rate': product.rate,
+                            'card_price': product.price,
+                            'card_size': product.size,
+                            'card_id': product.id,
+                            'card_name': product.name,
+                            'card_brand': product.brand,
+                            'card_wishlist': app.user ? app.user.wishlist : false,
+                            'card_views': product.views,
+                            'card_quantity':product.quantity,
+                            'card_discount':product.discount ? product.discount.discountPercent : false
+                        } %}
+
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
+    </div>
+
+    {% block javascripts %}
+        {# Tooltip #}
+        <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@4"></script>
+        <script>
+            //Init tooltips
+            tippy('.product_desc')
+        </script>
+
+    {% endblock %}
+{% endblock %}

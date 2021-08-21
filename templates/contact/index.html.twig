@@ -1,0 +1,11 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+
+{% set page_title = 'app.contact.page_title'|trans %}
+{% set form_title =  'app.contact.form_title'|trans %}
+{% set form_side_img = asset('build/img/contact.png') %}
+
+{% block form_wrapper %}
+
+    {{ include('contact/_form.html.twig') }}
+
+{% endblock %}

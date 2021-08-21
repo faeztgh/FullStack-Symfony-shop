@@ -1,0 +1,8 @@
+{% trans_default_domain 'forms' %}
+<div class="w-full py-8 flex-col flex justify-center items-center">
+
+    <div class="profile-wrapper w-full py-5 px-8 md:px-20 whitespace-nowrap">
+        {{ include('profile/components/_form.html.twig', {'button_label': 'app.profile.save_btn' | trans}) }}
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+
+{% for locale in locales|split('|') %}
+    {% if locale != app.request.locale %}
+
+        <a class="dropdown-item font-semibold uppercase flex items-center"
+           id="selectedLocale"
+           href="{{ path(route, params|merge({ _locale: locale })) }}">
+            <img class="w-4 mr-1.5"
+                 src="{{ asset('build/img/flags/' ~ locale ~ '.png') }}"
+                 alt="{{ locale }}">
+            {{ locale }}
+        </a>
+
+    {% endif %}
+{% endfor %}
+
+

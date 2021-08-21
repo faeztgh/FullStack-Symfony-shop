@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import '~@fortawesome/fontawesome-free/css/all.css';
+//@import "~bootstrap/dist/css/bootstrap.css";
+
+* {
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+::selection {
+  background: #BF9B30;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #707070;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b5b5b5;
+
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.profile-wrapper {
+  .form-group {
+    margin-right: 10px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .avatar-wrapper {
+    border-style: dashed;
+    border-width: 3px;
+    border-color: #6E6E6E;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .custom-file {
+      display: none;
+    }
+  }
+}
+
+.success-checkout-gradient {
+  background-image: linear-gradient(135deg, #ffffff 35%, #fff4b8 100%);
+}
+
+//profile dashboard
+
+.dashboard_current_tab {
+  background-color: #dddddd !important;
+}
+
+.profile_tab {
+  display: none;
+}
+
+#dashboard_tab_1 {
+  display: block;
+}
+
+
+/*
+==================================
+      Override bootstrap
+==================================
+*/
+.navbar {
+  padding: 0;
+}
+
+.form-control, .btn {
+  padding: .5rem 1rem;
+}
+
+form {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1rem !important;
+}
+
+.reset-password .form-group {
+  margin-bottom: 1rem !important;
+}
+
+#contact_form .form-group {
+  margin-bottom: 1rem !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -100px;
+}
+
+.locale_dropdown {
+  .dropdown-menu[data-bs-popper] {
+
+    left: 0 !important;
+    min-width: 4.5rem !important;
+  }
+}

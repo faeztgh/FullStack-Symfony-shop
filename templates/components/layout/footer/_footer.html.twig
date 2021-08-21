@@ -1,0 +1,43 @@
+<footer class="navbar-dark bg-primary">
+    <div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
+
+        <div class="w-full mx-auto flex flex-wrap items-center">
+            <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+                <a class="text-gray-900 no-underline hover:text-gray-900 hover:no-underline" href="#">
+                    <img src="{{ asset('build/img/logo.png') }}" alt="">
+                </a>
+            </div>
+            <nav class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+                <ul class="navbar-nav  flex flex-row flex-wrap">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}">
+                            {{ 'app.nav.links.home'|trans }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            {{ 'app.nav.links.shop'|trans }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact') }}">
+                            {{ 'app.nav.links.contact' | trans }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('about') }}">
+                            {{ 'app.nav.links.about'|trans }}
+                        </a>
+                    </li>
+
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</footer>

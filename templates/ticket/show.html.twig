@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = 'Ticket #' ~ ticket.id %}
+{% block body %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>{{ 'app.entities.ticket.subject'|trans }}</th>
+            <td>{{ ticket.subject }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'app.entities.ticket.message'|trans }}</th>
+            <td>{{ ticket.message }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'app.entities.ticket.status'|trans }}</th>
+            <td>{{ ticket.status }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'app.entities.ticket.answer'|trans }}</th>
+            <td>{{ ticket.answer }}</td>
+        </tr>
+        <tr>
+            <th class="whitespace-nowrap">{{ 'app.entities.common.created_at'|trans }}</th>
+            <td>{{ ticket.createdAt ? ticket.createdAt|date('d-M-Y') : '' }}</td>
+        </tr>
+        <tr>
+            <th class="whitespace-nowrap">{{ 'app.entities.common.updated_at'|trans }}</th>
+            <td>{{ ticket.updatedAt ? ticket.updatedAt|date('d-M-Y') : '' }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = "app.nav.links.ticket"|trans %}
+
+{% macro thead(names) %}
+    <thead>
+    <tr class="font-bold">
+        {% for name in names %}
+            <th class="px-3 whitespace-nowrap py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                {{ name }}
+            </th>
+        {% endfor %}
+    </tr>
+    </thead>
+{% endmacro %}
+{% block body %}
+
+    <div class="w-full flex justify-center items-center py-5 max-w-2xl mx-auto">
+        {% for flashError in app.flashes('error') %}
+            <div class="alert alert-danger w-full max-w-lg text-center" role="alert">
+                {{ flashError }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <table class="table">
+
+        {{ _self.thead([
+
+            'app.entities.ticket.subject'|trans,
+            'app.entities.ticket.message'|trans,
+            'app.entities.ticket.status'|trans,
+            'app.entities.ticket.answer'|trans,
+            'app.entities.common.created_at'|trans,
+            'app.entities.common.updated_at'|trans,
+            'app.entities.common.actions'|trans,
+
+        ]) }}
+
+        <tbody>
+        {% for ticket in tickets %}
+            <tr class="text-gray-800 font-semibold">
+
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.subject }}
+                </td>
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.message | u.truncate(55) }}
+                    <a class="btn-link text-blue-700"
+                       href="{{ path('ticket_show', {'id': ticket.id}) }}">
+                        more...
+                    </a>
+                </td>
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.status }}
+                </td>
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.answer }}
+                </td>
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.createdAt ? ticket.createdAt|date('d-M-Y') : '' }}
+                </td>
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4">
+                    {{ ticket.updatedAt ? ticket.updatedAt|date('d-M-Y') : '' }}
+                </td>
+
+                <td class="px-2 border-b border-gray-200 bg-white text-sm ml-4 flex flex-wrap justify-between md:justify-start">
+                    <a class="btn btn-info m-1"
+                       href="{{ path('ticket_show', {'id': ticket.id}) }}">
+                        {{ 'app.ticket.index.show_btn'|trans }}
+                    </a>
+                    <a class="btn btn-warning m-1"
+                       href="{{ path('ticket_edit', {'id': ticket.id}) }}">
+                        {{ 'app.ticket.index.edit_btn'|trans }}
+                    </a>
+
+                    {% include 'ticket/_delete_form.html.twig' %}
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10" class="w-full text-center">
+                    {{ 'app.admin.components._table.no_record_exist'|trans }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a class="btn btn-link" href="{{ path('ticket_new') }}">
+        {{ "app.entities.ticket.create_new_ticket"|trans }}
+    </a>
+
+
+{% endblock %}

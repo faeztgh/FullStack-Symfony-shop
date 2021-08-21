@@ -1,0 +1,45 @@
+
+###> symfony/framework-bundle ###
+.idea
+.idea/*
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+/public/uploads
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+.idea/faez-shop.iml
+.idea/jsLibraryMappings.xml
+*.jpg
+*.png
+*.svg
+assets/uploads/
+
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+###< phpunit/phpunit ###
+.env.test
+.env
+
+
+*.cache
+/exports/
+/exports/*
+
+.phpunit.result.cache
+.env

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "module": "commonjs",
+    "lib": ["esnext", "es7", "es6", "dom"],
+    "target": "es6"
+  },
+  "exclude": ["node_modules"]
+}

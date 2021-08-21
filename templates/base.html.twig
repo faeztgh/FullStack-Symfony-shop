@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Shop App | {{ page_title }}{% endblock %}</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="author" content="name"/>
+    <meta name="description" content="description here"/>
+    <meta name="keywords" content="shop, ecommerce"/>
+    <link rel="icon" href="{{ asset('build/img/logo.png') }}" type="image/x-icon"/>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('custom') }}
+    {% endblock %}
+
+</head>
+<body>
+
+{% include('components/layout/header/_navbar.html.twig') %}
+
+<div class="min-h-screen">
+    {% block body %}
+    {% endblock %}
+</div>
+
+{% include('components/layout/footer/_footer.html.twig') %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+    </script>
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+
+</html>

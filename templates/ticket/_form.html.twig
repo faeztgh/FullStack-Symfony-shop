@@ -1,0 +1,8 @@
+
+{% trans_default_domain("forms") %}
+{{ form_start(form,{"attr":{'class':'flex flex-col justify-center items-center'}}) }}
+    {{ form_widget(form,{"attr":{'class':'w-full' }}) }}
+{% include 'components/buttons/_primary_btn.html.twig'
+    with {'title': button_label} %}
+
+{{ form_end(form) }}

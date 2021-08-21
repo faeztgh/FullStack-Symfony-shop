@@ -1,0 +1,57 @@
+{% macro thead(names) %}
+    <thead>
+    <tr>
+
+        {% for name in names %}
+            <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <div class="flex cursor-pointer">
+                <span class="mr-2">
+               {{ name }}
+                </span>
+                </div>
+            </th>
+        {% endfor %}
+
+    </tr>
+    </thead>
+{% endmacro %}
+
+<table class="min-w-full divide-y divide-gray-200">
+
+    {{ _self.thead([
+        'app.admin.components._table.user'|trans ,
+        'app.admin.components._table.joined_date'|trans ,
+        'app.admin.components._table.total_purchased'|trans
+    ]) }}
+
+
+    <tbody class="bg-white divide-y divide-gray-200">
+    {% if users | length > 0 %}
+        {% for user in users %}
+            <tr>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                    <p>{{ user.firstName }} {{ user.lastName }}</p>
+                    <p class="text-xs text-gray-400">
+                        {{ user.username }}
+                    </p>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                    <p>{{ user.createdAt | date }}</p>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                    <div class="flex text-green-500">
+                        <p>{{ user.cart.totalPrice | price }}</p>
+                    </div>
+                </td>
+
+            </tr>
+        {% endfor %}
+
+    {% else %}
+        <div class="alert alert-info w-full text-center">
+            {{ 'app.admin.components._table.no_record_exist'|trans }}
+        </div>
+
+    {% endif %}
+    </tbody>
+</table>

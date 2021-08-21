@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'app.cart.page_title'|trans %}
+
+{% block body %}
+    <div class="min-h-screen bg-gray-300">
+        <div class="py-12 px-5 ">
+            <div class="w-full mx-auto bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
+
+                <div class="w-full flex justify-center items-center py-5">
+                    {% for flashError in app.flashes('error') %}
+                        <div class="alert alert-danger w-full max-w-lg text-center" role="alert">{{ flashError }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="md:flex ">
+                    <div class="w-full p-4 px-5 py-5">
+                        <div class="flex flex-col lg:flex-row">
+                            <div class="w-full lg:w-2/3 p-5 flex flex-col justify-between">
+                                <div class="w-full">
+                                    <div class="w-full flex justify-between items-baseline flex-wrap">
+                                        <h1 class="text-xl font-medium ">
+                                            {{ 'app.cart.shoppng_cart'|trans }}
+                                        </h1>
+                                        <h1 class="font-medium">
+                                            {{ 'app.entities.cart.credit'|trans }}:
+                                            <span class="{{ app.user.credit > 0 ? "text-blue-700" : "text-red-700" }}">
+                                            {{ app.user.credit | price }}
+                                            </span>
+
+                                        </h1>
+                                    </div>
+
+                                    {% if cartItems | length > 0 %}
+                                        {% for cartItem in cartItems %}
+
+                                            {% include 'components/cards/components/cards/_cart_card.html.twig' with {
+                                                "thumbnail": cartItem.product.image,
+                                                "name": cartItem.product.name,
+                                                "brand": cartItem.product.brand,
+                                                "desc": cartItem.product.briefDescription,
+                                                "quantity": cartItem.quantity,
+                                                "itemPrice": cartItem.product.price - ((cartItem.product.discount.discountPercent / 100) * cartItem.product.price) ,
+                                                "cartItem_id": cartItem.id,
+                                                "product_id": cartItem.product.id
+                                            } %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <h1 class="alert alert-info text-center w-full my-5">
+                                            {{ 'app.cart.empty_cart'|trans }}
+                                        </h1>
+                                    {% endif %}
+                                </div>
+
+                                <div class="flex justify-between items-center mt-6 pt-6 border-t">
+                                    <div class="flex items-center"><i class="fa fa-arrow-left text-sm pr-2"></i>
+                                        <a href="{{ path('shop') }}" class="text-md font-medium text-blue-500">
+                                            {{ 'app.cart.continue_shopping'|trans }}
+                                        </a>
+                                    </div>
+                                    <div class="flex justify-center items-end">
+                                        <span class="text-sm font-medium text-gray-400 mr-1"> {{ 'app.cart.subtotal'|trans }}:</span>
+                                        <span class="text-lg font-bold text-gray-800 "
+                                              id="cart_subtotal">
+                                            {{ subTotal | price }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full lg:w-1/3 p-5 bg-gray-800 rounded overflow-visible">
+                                <span
+                                        class="text-xl font-medium text-gray-100 block pb-3"> {{ 'app.cart.card_details'|trans }}</span>
+                                <span class="text-xs text-gray-400 "> {{ 'app.cart.card_type'|trans }}</span>
+                                <div class="overflow-visible flex justify-between items-center mt-2">
+
+                                    <div class="flex justify-center items-center flex-col w-full">
+                                        <img src="https://img.icons8.com/color/96/000000/mastercard-logo.png"
+                                             width="40" class="relative right-5" alt=""/>
+                                        <span class="text-xs font-medium text-gray-200 bottom-2 relative right-5"> {{ 'app.cart.master_card'|trans }}.</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center flex-col pt-3">
+                                    <label class="text-xs text-gray-400 ">
+                                        {{ 'app.cart.name_on_card'|trans }}
+                                    </label>
+                                    <input type="text"
+                                           class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                                           placeholder="Giga Tamarashvili"/>
+                                </div>
+                                <div class="flex justify-center flex-col pt-3">
+                                    <label class="text-xs text-gray-400 ">
+                                        {{ 'app.cart.card_number'|trans }}
+                                    </label>
+                                    <input type="text"
+                                           class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                                           placeholder="**** **** **** ****"/>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 pt-2 mb-3">
+                                    <div class="col-span-2 ">
+                                        <label class="text-xs text-gray-400">
+                                            {{ 'app.cart.expiration_date'|trans }}
+                                        </label>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <input type="text"
+                                                   class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                                                   placeholder="mm"/>
+                                            <input type="text"
+                                                   class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                                                   placeholder="yyyy"/>
+                                        </div>
+                                    </div>
+                                    <div class=""><label class="text-xs text-gray-400">CVV</label>
+                                        <input type="text"
+                                               class="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4"
+                                               placeholder="XXX"/>
+                                    </div>
+                                </div>
+                                <a href="{{ path('cart_checkout') }}"
+                                   class="h-12 w-full bg-blue-500 text-center flex justify-center items-center
+                                    focus:outline-none text-white hover:bg-blue-600 block font-semibold capitalize"
+                                >
+                                    {{ 'app.cart.checkout.button'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+
+        {# Tooltip #}
+        <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@4"></script>
+        <script>
+            //Init tooltips
+            tippy('.product_desc')
+        </script>
+    {% endblock %}
+{% endblock %}

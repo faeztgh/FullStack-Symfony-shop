@@ -1,0 +1,290 @@
+app:
+  admin:
+    page_title: "Admin Dashboard"
+    sidebar:
+      dashboard: "Dashboard"
+      products: "Produkte"
+      discount: "Rabatt"
+      contact_message: "Kontakt Meldungen"
+      cart: "Wagen"
+      cart_item: "Warenkorb Artikel"
+      super_admin_menu: "Super Admin Menü"
+      users: "Benutzer"
+      tickets: "Tickets"
+
+    components:
+      _nav:
+        brand: "Administrationsbereich"
+      _table:
+        user: "Benutzer"
+        joined_date: "Beitrittsdatum"
+        total_purchased: "Total Gekauft"
+        no_record_exist: "Kein Datensatz vorhanden"
+    home:
+      page_title: "Verwaltungs Dashboard"
+      total_users: "Benutzer gesamt"
+      total_products: "Gesamt Produkte"
+      total_purchased: "Total Gekauft"
+      in_cart_items: "Artikel im Warenkorb"
+      purchased_table: "Gekaufter Tisch"
+      Admin Dashboard: "Verwaltungs Dashboard"
+
+  about:
+    title: "Über uns"
+    body: "Heute sind die Qualitätsstandards von Shop App noch genauso kompromisslos wie bei der Gründung der Marke.
+           Jedes Stück wird von Kunsthandwerkern hergestellt, die ihr Leben dem Erlernen der Kunst gewidmet haben, schöne und praktische Lederwaren herzustellen.
+           schöne und praktische Lederwaren herzustellen. Durch unvergleichliche Handwerkskunst ist Shop App gemacht, um
+           langlebig.
+
+           Im Laufe der Jahre haben wir langjährige Beziehungen zu unseren Produktionspartnern aufgebaut, die jeweils auf
+           die auf Vertrauen und einer Verpflichtung zu hervorragender Qualität beruhen. Tatsächlich wird die ursprüngliche Shop App-Kollektion immer noch
+           in der gleichen Fabrik in Norwalk, CT, hergestellt, die auch das allererste kommerziell erhältliche
+           Shop App Produkt produzierte - den Express No. 2.
+
+           Diese Kunsthandwerker haben viele der Stücke geschaffen, die als Bausteine unseres Erbes dienen,
+           von den handgefertigten Waren für Präsident Ronald Reagan bis hin zu den unzähligen Examiner No. 5
+           Aktentaschen, die vom Who's-Who der Wall Street in den späten 80er und frühen 90er Jahren getragen wurden."
+  contact:
+    page_title: "Contact"
+    form_title: "SAGEN SIE ETWAS NETTES!"
+
+  ticket:
+    index:
+      show_btn: "anzeigen"
+      edit_btn: "bearbeiten"
+      remove_btn: "entfernen"
+    new:
+      page_title: "Neues Ticket"
+      form_title: "Neues Ticket erstellen"
+      save_btn: "Sparen"
+    edit:
+      page_title: "Ticket bearbeiten"
+      form_title: "Ihr Ticket bearbeiten"
+      update_btn: "Update"
+    controller:
+      You only can remove submitted tickets: "Sie können nur eingereichte Tickets entfernen!"
+      you cannot remove this ticket: "Sie können dieses Ticket nicht entfernen"
+
+  nav:
+    brand: "Shop"
+    search: "Suchen"
+    links:
+      home: "Home"
+      contact: "Kontakt"
+      shop: "Shop"
+      about: "Über"
+      admin_panel: "Administrationsbereich"
+      profile: "Profil"
+      cart: "Wagen"
+      wish_list: "Wunschzettel"
+      ticket: "Ticket"
+      logout: "Abmelden"
+      login: "Anmeldung"
+      register: "Registrieren"
+  cart:
+    page_title: "Wagen"
+    shoppng_cart: "Einkaufswagen"
+    empty_cart: "Ihr Warenkorb ist leer"
+    continue_shopping: "Weiter einkaufen"
+    subtotal: "Zwischensumme"
+    card_details: "Karte Details"
+    card_type: "Karte Typ"
+    master_card: "Mastercard"
+    name_on_card: "Name auf Karte"
+    card_number: "Kartennummer"
+    expiration_date: "Verfallsdatum"
+    checkout_btn: "Auschecken"
+    remove_btn: "entfernen"
+    checkout:
+      page_title: "Hurra!"
+      title: "Viel Spaß beim Einkaufen!"
+      message: "Ihr Einkauf war erfolgreich!"
+      button: "Kaufen"
+    controller:
+      not_enough_credit_error: "Ihr Kredit ist nicht genug!"
+      empty_cart_error: "Sie können nicht mit leerem Einkaufswagen zur Kasse gehen!"
+      success: "Erfolg"
+      failed: "Gescheitert"
+
+  reset_password:
+    controller:
+      No reset password token found in the URL or in the session: "In der URL oder in der Sitzung wurde kein Token zum Zurücksetzen des Passworts gefunden."
+      There was a problem validating your reset request: "Es gab ein Problem bei der Validierung Ihrer Rücksetzanfrage"
+
+  search:
+    controller:
+      No Product Found: "Kein Produkt gefunden!"
+      please Enter Something: "Bitte geben Sie etwas ein!"
+
+  security:
+    controller:
+      This method can be blank - it will be intercepted by the logout key on your firewall: "Diese Methode kann leer sein - sie wird von der Abmeldetaste auf Ihrer Firewall abgefangen."
+
+
+  shop:
+    Notting Found: "Notting gefunden"
+    _card:
+      remove: "entfernen"
+      add_to_cart: "Zum Warenkorb hinzufügen"
+      size: "Größe"
+    _filter:
+      Filters: "Filter"
+      Sort By Price: "Nach Preis sortieren"
+      Select: "Wählen Sie"
+      Sort by Date: "Sortieren nach Datum"
+      Newest: "Neuestes"
+      Oldest: "Älteste"
+      Size: "Größe"
+      Color: "Farbe"
+      Red: "Rot"
+      Blue: "Blau"
+      Black: "Schwarz"
+      White: "Weiß"
+      Green: "Grün"
+      Rate: "Rate"
+      Reset: "Reset"
+      Apply: "Bewerbung"
+      Lowest: "Niedrigste"
+      Highest: "Höchste"
+    detail:
+      Not Available: "Nicht verfügbar"
+
+  wishlist:
+    page_title: "Wunschzettel"
+    Wish List: "Wunschzettel"
+    Your List is Empty: "Ihre Liste ist leer"
+    _Card:
+      Add To Cart: "Zum Warenkorb hinzufügen"
+      remove: "entfernen"
+
+  home:
+    page_title: "Home"
+    Welcome to the Shop: "Willkommen im Shop"
+    LUX Products: "LUX Produkte"
+    Most Popular: "Am beliebtesten"
+    Top Sell: "Top verkaufen"
+    Our Top Sale Product: "Unser meistverkauftes Produkt"
+    lead_card_intro: "Jede Woche wählen wir das meistverkaufte Produkt aus und zeigen es den Nutzern oben auf der Seite an."
+    Most Popular Products: "Beliebteste Produkte"
+    Rush! they are about to finish!: "Eile! Sie sind kurz vor dem Ziel!"
+    Services: "Dienstleistungen"
+    Online Shop: "Online Geschäft"
+    Access everything you need right now: "Zugriff auf alles, was Sie jetzt brauchen"
+    Go Shopping: "Einkaufen gehen"
+    Want to be a partner: "Ich möchte Partner werden"
+    Develop your local business: "Entwickeln Sie Ihr lokales Geschäft"
+    Contact us: "Kontakt"
+
+  profile:
+    sidebar:
+      title: "Dashboard"
+      edit_profile: "Profil bearbeiten"
+      checked_out: "Ausgecheckt"
+    profile_card:
+      shopping_bag: "Einkaufstasche"
+      checked_out: "Ausgecheckt"
+
+    checked_out:
+      table:
+        title: "Gekaufte Produkte"
+        product_name: "Produktname"
+        brand: "Marke"
+        model: "Modell"
+        color: "Farbe"
+        size: "Größe"
+        quantity: "Menge"
+        item_price: "Artikel Preis"
+        checked_out_date: "Ausgechecktes Datum"
+        discount: "Rabatt"
+        total_price: "Total Preis"
+        search: "Suchen"
+        no_item_exist: "Item não existe"
+        prev: "Präv"
+        next: "Weiter"
+
+  entities:
+    common:
+      id: "ID"
+      created_user: "Erstellt von Benutzer"
+      updated_user: "Aktualisiert von Benutzer"
+      created_at: "Erstellt am"
+      updated_at: "Aktualisiert am"
+      actions: "Aktionen"
+
+    product:
+      entity_title: "Produkte"
+      name: "Name"
+      brand: "Marke"
+      model: "Modell"
+      discount: "Rabatt"
+      rate: "bewerten"
+      price: "Preis"
+      size: "Größe"
+      color: "Farbe"
+      brief_description: "Kurzbeschreibung"
+      description: "Beschreibung"
+      image: "Bild"
+      image_file: "Bild hochladen"
+      cart_items: "Warenkorb Bild"
+      image_preview: "Bildvorschau"
+      views: "Ansichten"
+      quantity: "Menge"
+
+
+    user:
+      entity_title: "Benutzer"
+      first_name: "Vorname"
+      last_name: "Nachname"
+      address: "Adresse"
+      phone_no: "Telefon"
+      username: "Benutzername"
+      email: "Email"
+      roles: "Rollen"
+      password: "Passwort"
+      repeat_password: "Passwort wiederholen"
+      avatar: "Avatar"
+      cart: "Wagen"
+      tickets: "Eintrittskarten"
+      wishlist: "Wunschzettel"
+      credit: "Kredit"
+
+    cart:
+      entity_title: "Wagen"
+      user: "Benutzer"
+      cart_item: "Warenkorb Artikel"
+      total_price: "Total Preis"
+      quantity: "Menge"
+      credit: "Kredit insgesamt"
+      purchase: "Kaufen"
+
+
+    cart_item:
+      entity_title: "Warenkorb Artikel"
+      quantity: "Menge"
+      total_price: "Total Preis"
+      cart: "Wagen"
+      product: "Produkt"
+      status: "Status"
+      checked_out_date: "Ausgecheckt Datum"
+
+    contact:
+      entity_title: "Kontakt"
+      full_name: "Vollständiger Name"
+      email: "Email"
+      subject: "Thema"
+      message: "Nachricht"
+
+    discount:
+      entity_title: "Rabatte"
+      name: "Name"
+      description: "Beschreibung"
+      discount_percent: "Rabatt Prozent"
+
+    ticket:
+      entity_title: "Ticket"
+      subject: "Thema"
+      owner: "Eigentümer"
+      message: "Nachricht"
+      status: "Status"
+      answer: "Antwort"
+      create_new_ticket: "Neues Ticket erstellen"

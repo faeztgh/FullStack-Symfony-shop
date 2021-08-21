@@ -1,0 +1,29 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+{%  trans_default_domain 'forms' %}
+{% set page_title = 'app.reset_password.page_title'|trans %}
+{% set form_title = 'app.reset_password.form_title'|trans %}
+{% set form_side_img = asset('build/img/forgot-password.png') %}
+
+
+{% block form_wrapper %}
+
+    {% for flashError in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger mt-5 text-center" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <div class="w-full">
+
+        {{ form_start(requestForm,{"attr":{'class':'flex flex-col justify-center items-center w-full'}}) }}
+        <div class="form-group w-full">
+            {{ form_row(requestForm.email) }}
+            <small class="font-semibold text-gray-400">
+               {{ 'app.reset_password.sub_message'|trans }}
+            </small>
+        </div>
+    </div>
+    <div class="max-w-xs flex mx-auto">
+        {% include 'components/buttons/_primary_btn.html.twig' with {'title':'app.reset_password.send_email_btn'|trans} %}
+    </div>
+    {{ form_end(requestForm) }}
+
+
+{% endblock %}

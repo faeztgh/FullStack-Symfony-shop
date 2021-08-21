@@ -1,0 +1,9 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+
+{% set page_title = "app.ticket.new.page_title"|trans %}
+{% set form_title =  'app.ticket.new.form_title'|trans %}
+{% set form_side_img = asset('build/img/ticket.png') %}
+
+{% block form_wrapper %}
+            {{ include('ticket/_form.html.twig', {'button_label': 'app.ticket.new.save_btn'|trans}) }}
+{% endblock %}

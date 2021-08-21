@@ -1,0 +1,6 @@
+<form class="p-0 w-auto" method="post" action="{{ path('ticket_delete', {'id': ticket.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ticket.id) }}">
+    <button class="btn btn-danger m-1">
+        {{ 'app.ticket.index.remove_btn'|trans }}
+    </button>
+</form>

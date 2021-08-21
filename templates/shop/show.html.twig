@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = product.name %}
+
+{% block body %}
+    <div class="min-w-screen min-h-screen bg-gray-100 flex items-center p-5 lg:p-10 overflow-hidden relative">
+        <div class="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+            <div class="md:flex items-start -mx-10">
+                <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+                    <div class="relative">
+                        <img src="/uploads/products/{{ product.image }}"
+                             class="w-full relative z-10 border-4 border-yellow-200 shadow-lg"
+                             alt=""/>
+                        <div class="border-4 border-yellow-200 absolute top-10 bottom-10 left-10 right-10 z-0"></div>
+
+                        <div class="w-full  items-center justify-center my-3">
+                            <div class="w-full flex-none text-sm flex items-center text-gray-600">
+                                <ul class="flex flex-row justify-center items-center space-x-2">
+                                    <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-blue-600 rounded-full transition ease-in duration-300">
+                          <a href="#blue" class="block w-3 h-3 bg-blue-600 rounded-full"></a>
+                        </span>
+                                    </li>
+                                    <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-yellow-400 rounded-full transition ease-in duration-300">
+                          <a href="#yellow" class="block w-3 h-3  bg-yellow-400 rounded-full"></a>
+                        </span>
+                                    </li>
+                                    <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-red-500 rounded-full transition ease-in duration-300">
+                          <a href="#red" class="block w-3 h-3  bg-red-500 rounded-full"></a>
+                        </span>
+                                    </li>
+                                    <li class="">
+                        <span class="block p-1 border-2 border-gray-900 hover:border-green-500 rounded-full transition ease-in duration-300">
+                          <a href="#green" class="block w-3 h-3  bg-green-500 rounded-full"></a>
+                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-10">
+                    <div class="mb-10">
+                        <h1 class="font-bold uppercase text-2xl mb-2">{{ product.name }} </h1>
+                        <h4 class="font-semibold capitalize text-lg mb-5">{{ product.brand }}</h4>
+                        <p class="text-sm">
+                            {{ product.description }}
+                        </p>
+                        <div class="w-full my-3">
+                            {% for i in range(1, product.rate) %}
+                                <span class="float-left">
+                                    <i class="text-warning fa fa-star product_rate"
+                                       data-tippy-content="{{ i }}">
+                                    </i>
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inline-block align-bottom mr-5 my-3">
+
+                            {% if product.discount %}
+                                <span class=" text-3xl line-through text-gray-400">
+                                {{ product.price | price }}
+                            </span>
+                                <span class="text-xl leading-none align-baseline line-through text-gray-400">.00</span>
+
+                                <span class="text-2xl ml-5 leading-none align-baseline">$</span>
+                                <span class="font-bold text-5xl leading-none align-baseline">
+
+                                    {{ product.price - ((product.discount.discountPercent / 100) * product.price) }}
+                            </span>
+                            {% else %}
+                                <span class="font-bold text-5xl leading-none align-baseline">
+                                    {{ product.price|price }}
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+                        <div class="inline-block align-bottom">
+                            {% if product.quantity > 0 %}
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <button class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                                            id="addToCart{{ product.id }}"
+                                    >
+                                        {{ 'app.shop._card.add_to_cart'|trans }}
+                                    </button>
+                                {% else %}
+
+                                    <a class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                                       href="{{ path('app_login') }}"
+                                    >
+                                        {{ 'app.shop._card.add_to_cart'|trans }}
+                                    </a>
+                                {% endif %}
+
+                            {% else %}
+                                <span class="bg-gray-400 opacity-75 hover:opacity-100 text-black rounded-full px-10 py-2 font-semibold cursor-not-allowed">
+                                    {{ 'app.shop.detail.Not Available'|trans }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+
+        <script>
+            $(document).ready(() => {
+
+                $("#addToCart{{ product.id }}").on("click", () => {
+                    $.ajax({
+                        url: "{{ path('add_to_cart') }}",
+                        type: 'POST',
+                        dataType: 'json',
+                        async: true,
+                        data: {
+                            id: {{ product.id }},
+                        },
+                        success: (data) => {
+                            $("#shopping_bag_count").html(data.cartItems);
+                        },
+                        error: (xhr, textStatus, errorThrown) => {
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        {# Tooltip #}
+        <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@4"></script>
+        <script>
+            //Init tooltips
+            tippy('.product_rate')
+        </script>
+
+    {% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+{% trans_default_domain 'forms' %}
+{% set page_title = 'app.registration.page_title'|trans %}
+{% set form_title = 'app.registration.form_title'|trans %}
+{% set form_side_img = asset('build/img/side-image.png') %}
+
+{% block form_wrapper %}
+
+    {% for flashError in app.flashes('error') %}
+        <div class="alert alert-danger text-center mx-4" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    {{ form_start(registrationForm,{"attr":{'class':'flex flex-col justify-center items-center w-full'}}) }}
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.firstName) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.lastName) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.email) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.username) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'app.registration.password'
+        }) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.address) }}
+    </div>
+
+    <div class="form-group w-full">
+        {{ form_row(registrationForm.phoneNo) }}
+    </div>
+
+
+
+
+    {# {{ form_row(registrationForm.agreeTerms) }} #}
+    <div class="mb-10 w-full h-full">
+        {% include 'components/buttons/_primary_btn.html.twig'with {'title':'app.registration.register_btn' | trans} %}
+    </div>
+
+    {{ form_end(registrationForm) }}
+
+{% endblock %}

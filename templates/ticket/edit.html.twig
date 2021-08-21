@@ -1,0 +1,11 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+
+{% set page_title = "app.ticket.edit.page_title"|trans %}
+{% set form_title = "app.ticket.edit.form_title"|trans %}
+{% set form_side_img = asset('build/img/edit_ticket.png') %}
+
+{% block form_wrapper %}
+
+    {{ include('ticket/_form.html.twig', {'button_label': 'app.ticket.edit.update_btn'|trans}) }}
+
+{% endblock %}

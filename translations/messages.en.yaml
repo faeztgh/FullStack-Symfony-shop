@@ -1,0 +1,291 @@
+app:
+  common:
+
+  admin:
+    page_title: "Admin Dashboard"
+    sidebar:
+      dashboard: "Dashboard"
+      products: "Products"
+      discount: "Discount"
+      contact_message: "Contact Messages"
+      cart: "Cart"
+      cart_item: "Cart Item"
+      super_admin_menu: "Super Admin Menu"
+      users: "Users"
+      tickets: "Tickets"
+    components:
+      _nav:
+        brand: "Admin Panel"
+      _table:
+        user: "User"
+        joined_date: "Joined Date"
+        total_purchased: "Total Purchased"
+        no_record_exist: "No Record Exist"
+    home:
+      page_title: "Admin Dashboard"
+      total_users: "Total Users"
+      total_products: "Total Products"
+      total_purchased: "Total Purchased"
+      in_cart_items: "In Cart Items"
+      purchased_table: "Purchased Table"
+      Admin Dashboard: "Admin Dashboard"
+
+  about:
+    title: "About Us"
+    body: "Today, Shop App standards of quality are just as uncompromising as when the brand was founded.
+              Every piece is created by artisans who have dedicated their lives to learning the art of making
+              beautiful and practical leather goods. Through unparalleled craftsmanship, Shop App is made to
+              last.
+
+              Over the years, we’ve built long-standing relationships with our production partners, each one
+              rooted in trust and a commitment to excellence. In fact, the Shop App original collection is still
+              crafted in the same factory in Norwalk, CT that produced the very first commercially available
+              Shop App product — the Express No. 2.
+
+              These artisans created many of the pieces that serve as the building blocks of our heritage,
+              from the handcrafted goods made for President Ronald Reagan to the countless Examiner No. 5
+              briefcases carried by the who’s-who of Wall Street in the late 80’s and early 90’s."
+  contact:
+    page_title: "Contact"
+    form_title: "SAY SOMETHING NICE!"
+
+  ticket:
+    index:
+      show_btn: "Show"
+      edit_btn: "Edit"
+      remove_btn: "Remove"
+    new:
+      page_title: "New Ticket"
+      form_title: "Make new Ticket"
+      save_btn: "Save"
+    edit:
+      page_title: "Edit Ticket"
+      form_title: "Edit your Ticket"
+      update_btn: "Update"
+    controller:
+      You only can remove submitted tickets: "You only can remove submitted tickets!"
+      you cannot remove this ticket: "You cannot remove this ticket"
+
+  nav:
+    brand: "Shop"
+    search: "Search"
+    links:
+      home: "Home"
+      contact: "Contact"
+      shop: "Shop"
+      about: "About"
+      admin_panel: "Admin Panel"
+      profile: "Profile"
+      cart: "Cart"
+      wish_list: "Wish List"
+      ticket: "Ticket"
+      logout: "Logout"
+      login: "Login"
+      register: "Register"
+
+  cart:
+    page_title: "Cart"
+    shoppng_cart: "Shopping Cart"
+    empty_cart: "Your cart is empty"
+    continue_shopping: "Continue Shopping"
+    subtotal: "Subtotal"
+    card_details: "Card Details"
+    card_type: "Card Type"
+    master_card: "mastercard"
+    name_on_card: "Name on Card"
+    card_number: "Card Number"
+    expiration_date: "Expiration Date"
+    checkout_btn: "Check Out"
+    remove_btn: "remove"
+    checkout:
+      page_title: "Hooray!"
+      title: "Happy Shopping!"
+      message: "You're shopping was successful!"
+      button: "Purchase"
+    controller:
+      not_enough_credit_error: "Your credit is not enough!"
+      empty_cart_error: "You Can't Checkout Empty Cart!"
+      success: "Success"
+      failed: "Failed"
+
+  reset_password:
+    controller:
+      No reset password token found in the URL or in the session: "No reset password token found in the URL or in the session."
+      There was a problem validating your reset request: "There was a problem validating your reset request"
+
+  search:
+    controller:
+      No Product Found: "No Product Found!"
+      please Enter Something: "please Enter Something!"
+
+  security:
+    controller:
+      This method can be blank - it will be intercepted by the logout key on your firewall: "This method can be blank - it will be intercepted by the logout key on your firewall."
+
+  shop:
+    Notting Found: "Notting Found"
+    _card:
+      remove: "remove"
+      add_to_cart: "Add To Cart"
+      size: "Size"
+    _filter:
+      Filters: "Filters"
+      Sort By Price: "Sort By Price"
+      Select: "Select"
+      Sort by Date: "Sort by Date"
+      Newest: "Newest"
+      Oldest: "Oldest"
+      Size: "Size"
+      Color: "Color"
+      Red: "Red"
+      Blue: "Blue"
+      Black: "Black"
+      White: "White"
+      Green: "Green"
+      Rate: "Rate"
+      Reset: "Reset"
+      Apply: "Apply"
+      Lowest: "Lowest"
+      Highest: "Highest"
+    detail:
+      Not Available: "Not Available"
+
+  wishlist:
+    page_title: "Wishlist"
+    Wish List: "Wish List"
+    Your List is Empty: "Your List is Empty"
+    _Card:
+      Add To Cart: "Add To Cart"
+      remove: "remove"
+
+
+  home:
+    page_title: "Home"
+    Welcome to the Shop: "Welcome to the Shop"
+    LUX Products: "LUX Products"
+    Most Popular: "Most Popular"
+    Top Sell: "Top Sell"
+    Our Top Sale Product: "Our Top Sale Product"
+    lead_card_intro: "Every week we select the most sale product and show it on top of the page to users"
+    Most Popular Products: "Most Popular Products"
+    Rush! they are about to finish!: "Rush! they are about to finish!"
+    Services: "Services"
+    Online Shop: "Online Shop"
+    Access everything you need right now: "Access everything you need right now"
+    Go Shopping: "Go Shopping"
+    Want to be a partner: "Want to be a partner"
+    Develop your local business: "Develop your local business"
+    Contact us: "Contact us"
+
+  profile:
+    sidebar:
+      title: "Dashboard"
+      edit_profile: "Edit Profile"
+      checked_out: "Checked Out"
+    profile_card:
+      shopping_bag: "Shopping Bag"
+      checked_out: "Checked Out"
+
+    checked_out:
+      table:
+        title: "Purchased Products"
+        product_name: "Product Name"
+        brand: "Brand"
+        model: "Model"
+        color: "Color"
+        size: "Size"
+        quantity: "Quantity"
+        item_price: "Item Price"
+        checked_out_date: "Checked Out Date"
+        discount: "Discount"
+        total_price: "Total Price"
+        search: "Search"
+        no_item_exist: "No Item Exist"
+        prev: "Prev"
+        next: "Next"
+
+  entities:
+    common:
+      id: "ID"
+      created_user: "Created by User"
+      updated_user: "Updated by User"
+      created_at: "Created At"
+      updated_at: "Updated At"
+      actions: "Actions"
+
+    product:
+      entity_title: "Products"
+      name: "Name"
+      brand: "Brand"
+      model: "Model"
+      discount: "Discount"
+      rate: "Rate"
+      price: "Price"
+      size: "Size"
+      color: "Color"
+      brief_description: "Brief Description"
+      description: "Description"
+      image: "Image"
+      image_file: "Upload Image"
+      cart_items: "Cart Image"
+      image_preview: "Image Preview"
+      views: "views"
+      quantity: "quantity"
+
+
+    user:
+      entity_title: "Users"
+      first_name: "First Name"
+      last_name: "Last Name"
+      address: "Address"
+      phone_no: "Phone No"
+      username: "Username"
+      email: "Email"
+      roles: "Roles"
+      password: "Password"
+      repeat_password: "Repeat Password"
+      avatar: "Avatar"
+      cart: "Cart"
+      tickets: "tickets"
+      wishlist: "wishlist"
+      credit: "credit"
+
+    cart:
+      entity_title: "Carts"
+      user: "User"
+      cart_item: "Cart Item"
+      total_price: "Total Price"
+      quantity: "Quantity"
+      credit: "Total Credit"
+      purchase: "Purchase"
+
+    cart_item:
+      entity_title: "Cart Items"
+      quantity: "Quantity"
+      total_price: "Total Price"
+      cart: "Cart"
+      product: "Product"
+      status: "Status"
+      checked_out_date: "Checked out Date"
+
+    contact:
+      entity_title: "Contact"
+      full_name: "Full Name"
+      email: "Email"
+      subject: "Subject"
+      message: "Message"
+
+    discount:
+      entity_title: "Discounts"
+      name: "Name"
+      description: "Description"
+      discount_percent: "Discount Percent"
+
+    ticket:
+      entity_title: "Ticket"
+      owner: "Owner"
+      subject: "Subject"
+      message: "Message"
+      status: "Status"
+      answer: "Answer"
+      create_new_ticket: "Create New Ticket"

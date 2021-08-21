@@ -1,0 +1,58 @@
+app:
+  registration:
+    page_title: "Register"
+    form_title: "Register"
+    register_btn: "Register"
+    first_name: "First Name"
+    last_name: "Last Name"
+    email: "Email"
+    password: "Password"
+    username: "Username"
+    phone_no: "Phone No"
+    address: "Address"
+    errors:
+      password_notblank: "Please enter a password"
+      email_exist: "Email Exist!"
+
+  login:
+    page_title: "Login"
+    form_title: "Login"
+    login_btn: "Login"
+    username: "Username"
+    password: "Password"
+    forgot_password: "Forgot Password"
+
+  reset_password:
+    page_title: "Reset your password"
+    form_title: "Reset your password"
+    email: "Email"
+    sub_message: "Enter your email address and we we will send you a link to reset your password"
+    email_notblank: "Please enter your email"
+    send_email_btn: "Send Email"
+    reset_password_btn: "Reset Password"
+    password_notblank: "Please enter a password"
+    new_password: "New password"
+    repeat_password: "Repeat Password"
+    invalid_message: "The password fields must match."
+
+  profile:
+    first_name: "First Name"
+    last_name: "Last Name"
+    username: "Username"
+    email: "Email"
+    address: "Address"
+    phone_no: "Phone No"
+    upload_avatar_btn: "Upload Avatar"
+    save_btn: "Save"
+
+  contact:
+    send_btn: "Send"
+    full_name: "Full Name"
+    email: "Email"
+    subject: "Subject"
+    message: "Message"
+
+  ticket:
+    save_btn: "Save"
+    subject: "Subject"
+    message: "Message"

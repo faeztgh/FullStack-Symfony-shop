@@ -1,0 +1,165 @@
+{% extends '@!EasyAdmin/page/content.html.twig' %}
+
+{% block body_class %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('custom') }}
+    {% endblock %}
+{% endblock %}
+
+{% block page_title %}
+    {{ 'app.admin.home.page_title'|trans }}
+{% endblock %}
+
+    {% block content_header %}
+        {% include 'admin/header/_navabr.html.twig' %}
+    {% endblock %}
+
+
+{% block main %}
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Dashboard</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+              rel="stylesheet"/>
+        <!-- Favicon -->
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    </head>
+
+    <main class="">
+        <div class="grid mb-4 pb-10 px-8 rounded bg-gray-100 bg-opacity-50 my-5">
+
+            <div class="grid grid-cols-12 gap-6">
+                <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
+                    <div class="col-span-12 mt-8">
+
+                        <div class="grid grid-cols-12 gap-6 mt-5">
+                            <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                               href="#">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <i class="fas fa-users h-7 w-7 text-blue-400 text-2xl"></i>
+
+                                        <div class="bg-green-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
+                                            <span class="flex items-center">30%</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-2 w-full flex-1">
+                                        <div>
+                                            <div class="mt-3 text-3xl font-bold leading-8">{{ usersCount }}</div>
+
+                                            <div class="mt-1 text-base text-gray-600 font-semibold">
+                                                {{ 'app.admin.home.total_users'|trans }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="transform hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                               href="#">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <i class="fas fa-tags h-7 w-7 text-yellow-400 text-2xl"></i>
+
+                                        <div class="bg-red-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
+                                            <span class="flex items-center">30%</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-2 w-full flex-1">
+                                        <div>
+                                            <div class="mt-3 text-3xl font-bold leading-8">{{ productsCount }}
+                                            </div>
+
+                                            <div class="mt-1 text-base text-gray-600 font-semibold">
+                                                {{ 'app.admin.home.total_products'|trans }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                               href="#">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <i class="fas fa-cart-arrow-down text-2xl h-7 w-7 text-pink-600"></i>
+
+                                        <div
+                                                class="bg-yellow-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
+                                            <span class="flex items-center">30%</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-2 w-full flex-1">
+                                        <div>
+                                            <div class="mt-3 text-3xl font-bold leading-8">{{ purChasedItems }}</div>
+
+                                            <div class="mt-1 text-base text-gray-600 font-semibold">
+                                                {{ 'app.admin.home.total_purchased'|trans }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                               href="#">
+                                <div class="p-5">
+                                    <div class="flex justify-between">
+                                        <i class="far fa-credit-card text-2xl h-7 w-7 text-green-400"></i>
+
+                                        <div
+                                                class="bg-blue-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
+                                            <span class="flex items-center">30%</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-2 w-full flex-1">
+                                        <div>
+                                            <div class="mt-3 text-3xl font-bold leading-8">{{ unPurChasedItems }}</div>
+
+                                            <div class="mt-1 text-base text-gray-600 font-semibold">
+                                                {{ 'app.admin.home.in_cart_items'|trans }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    {% include 'admin/components/_charts.html.twig' %}
+
+                    <div class="col-span-12 mt-5">
+                        <div class="grid gap-2 grid-cols-1 lg:grid-cols-1">
+                            <div class="bg-white p-4 shadow-lg rounded-lg">
+                                <h1 class="font-bold text-base">
+                                    {{ 'app.admin.home.purchased_table'|trans }}
+                                </h1>
+                                <div class="mt-4">
+                                    <div class="flex flex-col">
+                                        <div class="-my-2 overflow-x-auto">
+                                            <div class="py-2 align-middle inline-block min-w-full">
+                                                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+
+                                                    {% include 'admin/components/_table.html.twig' %}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+{% endblock %}
+
+{% block page_footer %}
+
+{% endblock %}

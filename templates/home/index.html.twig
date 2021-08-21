@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = 'app.home.page_title'|trans %}
+
+
+{% block body %}
+
+    <!--Header-->
+    {{ include('components/home/_home_header.html.twig') }}
+
+    <!--Container-->
+    <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
+
+        <div class="mx-0 sm:mx-6">
+
+            <!--Nav-->
+            {{ include('components/home/_home_nav.html.twig') }}
+
+            <div class=" w-full text-xl md:text-2xl text-gray-800 leading-normal rounded-t">
+
+                <!--Lead Card-->
+                {{ include('components/home/_home_lead-card.html.twig') }}
+                <!--/Lead Card-->
+
+
+                <!--Posts Container-->
+                {{ include('components/home/_home_post-container.html.twig') }}
+                <!--/ Post Container-->
+
+            </div>
+
+
+            <!--Subscribe-->
+            {{ include('components/home/_home_carousel.html.twig') }}
+            <!-- /Subscribe-->
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script>
+        //Init tooltips
+        tippy('.avatar')
+    </script>
+{% endblock %}

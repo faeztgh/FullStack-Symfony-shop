@@ -1,0 +1,60 @@
+{% extends 'components/layout/wrappers/form_wrapper.html.twig' %}
+{% trans_default_domain 'forms' %}
+{% set page_title = 'app.login.page_title'|trans %}
+{% set form_title = 'app.login.form_title'|trans %}
+{% set form_side_img = asset('build/img/side-image.png') %}
+
+{% block form_wrapper %}
+
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="form-group mb-3">
+            <label for="inputUsername" class="font-semibold">
+                {{ 'app.login.username'|trans }}
+            </label>
+            <input placeholder="{{ 'app.login.username'|trans }}" type="text" value="{{ last_username }}"
+                   name="username"
+                   id="inputUsername"
+                   class="form-control" autocomplete="username" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="font-semibold">
+                {{ 'app.login.password'|trans }}
+            </label>
+            <input placeholder="{{ 'app.login.password'|trans }}" type="password" name="password" id="inputPassword"
+                   class="form-control"
+                   autocomplete="current-password" required>
+            <small>
+                <a class="link-info font-semibold" href="{{ path('app_forgot_password_request') }}">
+                    {{ 'app.login.forgot_password'|trans }}?
+                </a>
+            </small>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+
+        {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+        #}
+        {% include 'components/buttons/_primary_btn.html.twig'with {'title':'app.login.login_btn' | trans} %}
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+<div id="product_cart{{ cartItem_id }}"
+     class="flex flex-col md:flex-row justify-between items-start md:items-center mt-6 pt-6 border-t">
+    <a href="{{ path('shop_show',  {"id":product_id}) }}"
+       class="flex items-center product_desc" data-tippy-content="{{ desc }}">
+        <img src="/uploads/products/{{ thumbnail }}"
+             style="width: 50px; height: 50px; max-width: 60px; max-height: 60px;"
+             class="rounded-full " alt=""/>
+        <div class="flex flex-col ml-3 ">
+            <span class="text-md font-medium">{{ name }}</span>
+            <span class="text-xs font-light text-gray-400">{{ brand }}</span>
+        </div>
+    </a>
+    <div class="flex w-full flex-col ml-auto md:flex-row justify-end md:items-center items-start">
+        <div class="pr-8 flex self-start">
+
+            <input type="number"
+                   class="focus:outline-none text-black bg-gray-50 text-center w-8 border border-gray-500 text-sm mx-2"
+                   value="{{ quantity }}"
+                   min="1"
+                   id="quantityInput{{ cartItem_id }}"
+            />
+
+        </div>
+        <div class="mx-4 w-12">
+            <span class="text-xs font-medium">
+                {{ itemPrice | price }}
+            </span>
+        </div>
+        <button id="removeFromCart{{ cartItem_id }}"
+                class="px-2 mx-2 py-0.5 whitespace-nowrap bg-red-500 text-white capitalize hover:text-gray-200 hover:bg-red-400"
+        >
+            {{ 'app.cart.remove_btn'|trans }}
+            <i class="fas fa-times "></i>
+        </button>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(() => {
+
+            // handle change quantity
+            $("#quantityInput{{ cartItem_id }}").on('change', () => {
+                const value = $("#quantityInput{{ cartItem_id }}").val();
+                $.ajax({
+                    url: "{{ path('cart_handle_quantity') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ cartItem_id }},
+                        value: value
+                    },
+                    success: (data) => {
+                        console.log(data);
+
+                        $('#cart_subtotal')
+                            .html(`$${data.subTotal !== null && data.subTotal}`)
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            });
+
+            //remove product from shopping bag
+            $("#removeFromCart{{ cartItem_id }}").on("click", () => {
+                $.ajax({
+                    url: "{{ path('remove_from_cart') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ cartItem_id }},
+                    },
+                    success: (data) => {
+                        console.log(data);
+                        $("#product_cart{{ cartItem_id }}").remove();
+                        $('#cart_subtotal')
+                            .html(`$${data.subTotal !== null && data.subTotal}`)
+                        $("#shopping_bag_count").html(data.cartItems);
+
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

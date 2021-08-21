@@ -1,0 +1,39 @@
+{{ form_start(form,{"attr":{'class':'flex flex-col justify-center items-center'}}) }}
+
+<div class="flex w-full flex-col md:flex-row justify-between md:my-3">
+    {{ form_row(form.firstName,{"attr":{'class':'w-full' }}) }}
+    {{ form_row(form.lastName,{"attr":{'class':'w-full'}}) }}
+</div>
+
+<div class="flex w-full flex-col md:flex-row justify-between md:my-3">
+    {{ form_row(form.username,{"attr":{'class':'w-full' }}) }}
+    {{ form_row(form.email,{"attr":{'class':'w-full'}}) }}
+</div>
+
+<div class="flex flex-col md:flex-row w-full justify-between md:my-3">
+    {{ form_row(form.address,{"attr":{'class':'w-full' }}) }}
+    {{ form_row(form.phoneNo,{"attr":{'class':'w-full'}}) }}
+</div>
+<div class="w-full avatar-wrapper mt-5">
+
+    <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
+        <li id="empty" class="h-full w-full text-center flex flex-col items-center justify-center items-center">
+            <img class="mx-auto w-32"
+                 id="avatar_placeholder"
+                 src="{{ asset('build/img/empty.png') }}"
+                 alt="no data"/>
+            {{ form_row(form.avatar,{"attr":{'class':'my-3 rounded-sm hidden px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none', 'value':'Upload Avatar'}}) }}
+        </li>
+    </ul>
+</div>
+
+<div class="max-w-sm w-full">
+    {% include 'components/buttons/_primary_btn.html.twig' with {'title':button_label} %}
+</div>
+
+{{ form_end(form) }}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('profile') }}
+{% endblock %}

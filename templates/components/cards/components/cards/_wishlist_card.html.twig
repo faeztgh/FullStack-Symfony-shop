@@ -1,0 +1,95 @@
+<div id="product_cart{{ listItem.id }}"
+     class="flex flex-col md:flex-row justify-between items-start md:items-center mt-6 pt-6 border-t">
+    <a href="{{ path('shop_show',  {"id": listItem.id }) }}"
+       class="flex items-center product_desc" data-tippy-content="{{ listItem.briefDescription }}">
+        <img src="/uploads/products/{{ listItem.image }}"
+             style="width: 50px; height: 50px; max-width: 60px; max-height: 60px;"
+             class="rounded-full " alt=""/>
+        <div class="flex flex-col ml-3 ">
+            <span class="text-md font-medium">{{ listItem.name }}</span>
+            <span class="text-xs font-light text-gray-400">{{ listItem.brand }}</span>
+        </div>
+    </a>
+    <div class="flex w-full flex-col ml-auto md:flex-row justify-end md:items-center items-start">
+
+        <div class="mx-4 w-12">
+            <span class="text-xs font-medium">
+                ${{ listItem.price  - ((listItem.discount.discountPercent / 100) * listItem.price ) }}.00
+            </span>
+        </div>
+        <button id="addToCart{{ listItem.id }}"
+                class="px-2 mx-2 py-0.5 whitespace-normal bg-green-500 text-white capitalize hover:text-gray-200 hover:bg-green-400 m-1"
+        >
+            {{ 'app.wishlist._Card.Add To Cart'|trans }}
+            <i class="fas fa-plus ml-1"></i>
+        </button>
+
+        <button id="removeFromWishlist{{ listItem.id }}"
+                class="px-2 mx-2 py-0.5 whitespace-nowrap bg-red-500 text-white capitalize hover:text-gray-200 hover:bg-red-400 m-1"
+        >
+            {{ 'app.wishlist._Card.remove'|trans }}
+            <i class="fas fa-times ml-1"></i>
+        </button>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(() => {
+
+            //remove product from wishlist and add to shopping bag
+            $("#addToCart{{ listItem.id }}").on("click", () => {
+                $.ajax({
+                    url: "{{ path('add_to_cart') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ listItem.id }},
+                    },
+                    success: (data) => {
+                        console.log(data);
+                        removeFromWishlist();
+                        $("#product_cart{{ listItem.id }}").remove();
+                        $("#shopping_bag_count").html(data.cartItems);
+
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            });
+
+            // remove product from wishlist
+            $("#removeFromWishlist{{ listItem.id }}").on("click", () => {
+                removeFromWishlist();
+            });
+
+            const removeFromWishlist = () => {
+                $.ajax({
+                    url: "{{ path('remove_from_wishlist') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: {
+                        id: {{ listItem.id }},
+                    },
+                    success: (data) => {
+                        console.log(data);
+                        $("#product_cart{{ listItem.id }}").remove();
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,77 @@
+<div class="flex flex-wrap justify-between pt-12 -mx-6">
+    <div class="w-full text-3xl my-6 font-bold text-center " id="lux_products">
+        <h1 class="text-gold-800">{{ 'app.home.LUX Products'|trans }}</h1>
+    </div>
+    {% for luxProduct in luxProducts %}
+        <!--1/3 col -->
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+                <a href="{{ path('shop_show',{"id":luxProduct.id}) }}"
+                   class="flex flex-wrap no-underline hover:no-underline">
+                    <img src="/uploads/products/{{ luxProduct.image }}"
+                         class="h-64 w-full rounded-t pb-6">
+                    <p class="w-full text-gray-600 text-xs md:text-sm px-6">{{ luxProduct.brand }}</p>
+                    <div class="w-full font-bold text-xl text-gray-900 px-6">
+                        {{ luxProduct.name }}
+                    </div>
+                    <p class="text-gray-800 font-serif text-base px-6 mb-5">
+                        {{ luxProduct.briefDescription }}
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="w-full text-3xl my-6 font-bold text-center " id="most_popular">
+        <h1 class="text-red-400">
+            {{ 'app.home.Most Popular Products'|trans }}
+        </h1>
+    </div>
+
+    {% for mostViewed in mostViewedProducts %}
+        <!--1/3 col -->
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+                <a href="{{ path('shop_show',{"id":mostViewed.id}) }}"
+                   class="flex flex-wrap no-underline hover:no-underline">
+                    <img src="/uploads/products/{{ mostViewed.image }}"
+                         class="h-64 w-full rounded-t pb-6">
+                    <p class="w-full text-gray-600 text-xs md:text-sm px-6">{{ mostViewed.brand }}</p>
+                    <div class="w-full font-bold text-xl text-gray-900 px-6">
+                        {{ mostViewed.name }}
+                    </div>
+                    <p class="text-gray-800 font-serif text-base px-6 mb-5">
+                        {{ mostViewed.briefDescription }}
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="w-full text-3xl my-6 font-bold text-center " id="least_quantity">
+        <h1 class="text-yellow-600">
+            {{ 'app.home.Rush! they are about to finish!'|trans }}
+        </h1>
+    </div>
+
+    {% for leastQuantity in leastQuantityProducts %}
+        <!--1/3 col -->
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink ">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden relative shadow-lg">
+                <a href="{{ path('shop_show',{"id":leastQuantity.id}) }}"
+                   class="flex flex-wrap no-underline hover:no-underline">
+                    <img src="/uploads/products/{{ leastQuantity.image }}"
+                         class="h-64 w-full rounded-t pb-6">
+                    <p class="w-full text-gray-600 text-xs md:text-sm px-6">{{ leastQuantity.brand }}</p>
+                    <div class="w-full font-bold text-xl text-gray-900 px-6">
+                        {{ leastQuantity.name }}
+                    </div>
+                    <p class="text-gray-800 font-serif text-base px-6 mb-5">
+                        {{ leastQuantity.briefDescription }}
+                    </p>
+                </a>
+                <span class="absolute w-24 mt-1 shadow -ml-7 text-center text-white font-semibold bg-red-600 top-0 left-0 transform -rotate-45">{{ leastQuantity.quantity }}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>

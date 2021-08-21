@@ -1,0 +1,13 @@
+<li class="nav-item dropdown locale_dropdown pr-4 mr-2 lg:pr-0">
+    <a class="nav-link dropdown-toggle flex justify-start items-center cursor-pointer uppercase"
+       data-bs-toggle="dropdown"
+    >
+        <img class="w-7 mr-1.5"
+             src="{{ asset('build/img/flags/' ~ app.request.locale ~ '.png') }}"
+             alt="{{ app.request.locale }}">
+        {{ app.request.locale }}
+    </a>
+    <div class="dropdown-menu font-semibold w-full">
+        {% include 'admin/header/components/_locale_toggler.html.twig' %}
+    </div>
+</li>

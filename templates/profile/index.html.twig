@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% set page_title = "Profile" %}
+{% block body %}
+
+    <div class="relative">
+        <div x-data="{ sidebarOpen: false, darkMode: false }" :class="{ 'dark': darkMode }">
+            <div class="flex min-h-screen bg-gray-100 dark:bg-gray-800 font-roboto">
+                <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false"
+                     class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity sm:hidden"></div>
+
+                {# Siebar #}
+                {% include 'profile/components/_profile_sidebar.html.twig' %}
+
+
+                <div class="flex-1 flex flex-col overflow-hidden">
+                    <main class="flex-1 overflow-x-hidden overflow-y-auto">
+                        <div class="container mx-auto px-6 py-8">
+
+                            {# Profile Card #}
+                            {% include 'profile/components/_profile_card.html.twig' %}
+
+                            <div class="grid place-items-center " id="profile_content_wrapper">
+
+                                {# Edit Profile start #}
+                                <div class="w-full profile_tab" id="dashboard_tab_1">
+                                    {% include 'profile/components/_edit_profile.html.twig' %}
+                                </div>
+                                {# Edit Profile end #}
+
+                                {# Checkout start #}
+                                <div class="w-full profile_tab" id="dashboard_tab_2">
+                                    {% include 'profile/components/_checked_out.html.twig' %}
+                                </div>
+                                {# Checkout end #}
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% block javascripts %}
+
+
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+        </script>
+        <script>
+            // toggle between tabs
+            $(document).ready(() => {
+                $('.tabs-menu a').click(function (event) {
+                    event.preventDefault();
+
+                    // Toggle active class on tab buttons
+                    $(this).parent().addClass("dashboard_current_tab");
+                    $(this).parent().siblings().removeClass("dashboard_current_tab");
+
+                    // display only active tab content
+                    const activeTab = $(this).attr("href");
+                    $('.profile_tab').not(activeTab).css("display", "none");
+                    $(activeTab).fadeIn();
+                });
+            });
+
+        </script>
+
+    {% endblock %}
+{% endblock %}

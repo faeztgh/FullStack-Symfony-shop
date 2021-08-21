@@ -1,0 +1,11 @@
+<form class="flex max-w-lg p-1" method="GET" action="{{ path('search') }}">
+    <input class="form-control rounded-l-sm"
+           type="search"
+           name="query"
+           placeholder="{{ 'app.nav.search'|trans }}">
+
+    <button class="btn rounded-r-sm bg-dark text-gray-200 hover:text-white " aria-label="search"
+            type="submit">
+        {{ 'app.nav.search'|trans }}
+    </button>
+</form>

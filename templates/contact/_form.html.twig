@@ -1,0 +1,5 @@
+{% trans_default_domain 'forms' %}
+{{ form_start(contactForm,{"attr":{'class':'flex flex-col justify-center items-center'}}) }}
+    {{ form_widget(contactForm,{"attr":{'class':'w-full'}}) }}
+    {% include 'components/buttons/_primary_btn.html.twig'with {'title':'app.contact.send_btn'|trans} %}
+{{ form_end(contactForm) }}
