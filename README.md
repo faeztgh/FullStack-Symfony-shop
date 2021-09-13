@@ -1,51 +1,35 @@
 <p align="center">
-  <a href="#" target="blank"><img src="https://linku.nl/app/uploads/2020/07/symfony-logo-breed.png" width="320" alt="Symfony Logo" /></a>
+  <a href="#" target="blank"><img src="https://miro.medium.com/max/600/1*usQX20oLxChIAupsuRi7GQ.png" width="320" alt="Spring boot Logo" /></a>
 </p>
 
 
-  <p align="center">A progressive PHP framework for building efficient and scalable server-side applications.</p>
+  <p align="center">A progressive JAVA framework for building efficient and scalable server-side applications.</p>
 
 
 
 ## Description
-A fullstack shop app with Symfony framework and doctrine orm + webpack encore for handling client side and using twig as template engine.
+A fullstack Movie API app with Spring boot framework.
 
-## Installation
+## Requirements
 
 ```bash
-$ composer install
-$ npm i
+$ install postgres sql
+$ install java 11
+$ install maven (optional)
 ```
 
 ## Running the app
 
 ```bash
-# development with symfony cli:
-$ symfony server:start
+# Start Postgres:
+$  pg_ctl -D start
+$  psql -U <user>
 
-# development with php:
-$ php -S localhost:8000 -t /public
+# development API URL:
+$ http://localhost:8080/api/
 
-#running webpack
-$ npm run watch
-
+# Swagger Document:
+$ http://localhost:8080/swagger-ui/
 ```
 
-## Migrations
-
-```bash
-# make new migration
-$ php bin/console make:migration
-
-# migrate last migration
-$ php bin/console doctrine:migrations:migrate
-
-```
-
-## Test
-
-```bash
-# tests
-$ php bin/phpunit
-```
 
